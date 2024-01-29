@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react'
+import Contacts from './components/contacts';
+import CreateContact from './components/create_contact';
 
 function App() {
+  const key = 'contacts'
+  const [contacts, setContacts] = useState(JSON.parse(localStorage.getItem(key)) || [])
+
+  const onChange = contacts => {
+    localStorage.setItem(key, JSON.stringify(contacts))
+    setContacts(contacts)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Contacts contacts={contacts} />
+      <CreateContact contacts={contacts} onChange={onChange} />
     </div>
   );
 }
