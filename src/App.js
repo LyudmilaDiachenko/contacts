@@ -7,6 +7,10 @@ function App() {
   const key = 'contacts'
   const [contacts, setContacts] = useState(JSON.parse(localStorage.getItem(key)) || [])
 
+  const [currentIndex, setCurrentIndex] = useState()
+
+
+
   const onChange = contacts => {
     localStorage.setItem(key, JSON.stringify(contacts))
     setContacts(contacts)
@@ -14,8 +18,8 @@ function App() {
 
   return (
     <div className="App">
-      <Contacts contacts={contacts} />
-      <CreateContact contacts={contacts} onChange={onChange} />
+      <Contacts contacts={contacts} onChange={onChange} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
+      <CreateContact contacts={contacts} onChange={onChange} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
     </div>
   );
 }

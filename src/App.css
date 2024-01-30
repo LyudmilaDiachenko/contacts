@@ -2,33 +2,41 @@
     margin: 0;
     padding: 0;
 }
-.container{
+.App{    
+    display: flex;
+    flex-direction: row-reverse;
     background-color: #f4ebdb;
     width: 100vw;
     height: 100vh;
-    display: flex;
-    justify-content: center;
+}
+.container{
+    width: 50%;
 }
 h1{
     padding: 25px 0;
     text-align: center;
     color: #2c4a52;
 }
-form{
-    display: flex;
-    flex-direction: column;
-}
 .title_container{
-    width: 40%;
     padding: 10px;
 }
 .img_container{
     display: flex;
+    justify-content: center;
+}
+form{
+    margin-top: 25px;
+    text-align: center;
 }
 input{
     padding: 10px 0 10px 5px;
+    width: 80%;
+    background-color: #f4ebdb;
+    border: none;
+    border-bottom: 1px solid #2c4a52;
+    outline: none;
 }
-button{
+.button_submit{
     background-color: #537072;
     width: 20%;
     padding: 10px 5px;
@@ -37,13 +45,37 @@ button{
     margin: 20px auto;
     color: #f4ebdb;
 }
-
-.row {
-    width: 100%;
-    float: left;
+.contacts_container{
+    width: 50%;
 }
-.col {
-    float: left;
-    width: 25%;
-
+.plus_img{
+    margin-left: 50px;
+    width: 30px;
+    height: 30px;
+}
+.list_container{
+    display: flex;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+.list{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #2c4a52;
+}
+.item-container{
+    width: 250px;
+}
+.item{
+    margin: 0 5px 5px 0;
+}
+.btn{
+    border: none;
+    background-color: #f4ebdb;
+}
+.icon_del{
+    margin-left: 10px;
+}
+.grey{
+    color: #8e9b97;
 }

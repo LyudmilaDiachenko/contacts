@@ -4,10 +4,12 @@ import img from "../assets/icon-human.png"
 
 export default function CreateContact(props) {
 
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [email, setEmail] = useState("")
-  const [tel, setTel] = useState("")
+  const [firstName, setFirstName] = useState(props.contacts[props.currentIndex]?.firstName)
+  const [lastName, setLastName] = useState(props.contacts[props.currentIndex]?.lastName)
+  const [email, setEmail] = useState(props.contacts[props.currentIndex]?.email)
+  const [tel, setTel] = useState(props.contacts[props.currentIndex]?.tel)
+
+  const [lastIndex, setLastIndex] = useState()
 
   function onChangeFirstName(e) {
     setFirstName(e.target.value)
@@ -23,8 +25,13 @@ export default function CreateContact(props) {
   }
   function onSubmit(e) {
     e.preventDefault()
+    let contacts = props.contacts
+    if (props.currentIndex !== null){
+      contacts = props.contacts.filter((el, i) => i !== props.currentIndex)
+    }
+
     props.onChange([
-      ...props.contacts, 
+      ...contacts, 
       {
         firstName,
         lastName,
@@ -37,6 +44,16 @@ export default function CreateContact(props) {
     setLastName("")
     setEmail("")
     setTel("")
+
+    props.setCurrentIndex(null)
+  }
+
+  if (props.currentIndex !== null && lastIndex !== props.currentIndex){
+    setFirstName(props.contacts[props.currentIndex]?.firstName)
+    setLastName(props.contacts[props.currentIndex]?.lastName)
+    setEmail(props.contacts[props.currentIndex]?.email)
+    setTel(props.contacts[props.currentIndex]?.tel)
+    setLastIndex(props.currentIndex)
   }
 
   return (
@@ -63,7 +80,7 @@ export default function CreateContact(props) {
               value={tel}
               onChange={onChangeTel}
             />
-            <button type='submit'>Save</button>
+            <button type='submit' className='button_submit'>Save</button>
         </form>
       </div>
     </div>
